@@ -11,6 +11,16 @@ app.post('/reset', (req,res)=> {
     res.status(200).send('OK')
 })
 
+app.get('/balance/:account_id', (req,res)=> {
+    const {account_id} = req.params
+    const foundAccount = accounts.find((account) => account.id === parseInt(account_id))
+    if (foundAccount) {
+        res.status(200).send(foundAccount.balance.toString())
+        
+    }
+    res.status(404).send('0')    
+})
+
 
 
 
