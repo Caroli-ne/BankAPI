@@ -42,7 +42,17 @@ app.post('/event', (req,res)=> {
             
             break;
     
-        
+        case 'withdraw':
+            foundAccount = accounts.find((account) => account.id === origin)
+            if (foundAccount){
+                foundAccount.balance -= amount
+                res.status(201).send(foundAccount)
+            }
+            if (!foundAccount) {
+                res.status(404).send('0')
+            }
+                
+            break;
         default:
             break;
     }
