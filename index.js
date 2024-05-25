@@ -21,6 +21,32 @@ app.get('/balance/:account_id', (req,res)=> {
     res.status(404).send('0')    
 })
 
+app.post('/event', (req,res)=> {
+    const {type, destination, origin, amount} = req.body;
+    let foundAccount
+    switch (type) {
+        case 'deposit':
+            foundAccount = accounts.find((account) => account.id === destination)
+            if (foundAccount){
+                foundAccount.balance += amount
+                res.status(201).send(foundAccount)
+            }
+            if (!foundAccount) {
+                const newAccount = {
+                    id: destination,
+                    balance: amount
+                }
+                accounts.push(newAccount)
+                res.status(201).send(newAccount)
+            }
+            
+            break;
+    
+        
+        default:
+            break;
+    }
+})
 
 
 
