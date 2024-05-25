@@ -53,6 +53,20 @@ app.post('/event', (req,res)=> {
             }
                 
             break;
+        case 'transfer':
+            const originAccount = accounts.find((account) => account.id === origin)
+            const destinationAccount = accounts.find((account) => account.id === destination)
+            if (!originAccount || !destinationAccount) {
+                res.status(404).send('0')
+                break;
+            }
+            originAccount.balance -= amount
+            destinationAccount.balance += amount
+            res.status(201).send({
+                "origin": originAccount,
+                "destination": destinationAccount
+            })
+            break;
         default:
             break;
     }
