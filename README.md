@@ -17,7 +17,7 @@ Antes de iniciar, é importante certificar-se de ter o NodeJS instalado no siste
 - Com chave HTTPS:
   
 ```bash
-  git clone https://github.com/Caroli-ne/Projeto-NodeJS.git](https://github.com/Caroli-ne/BankAPI.git
+  git clone https://github.com/Caroli-ne/BankAPI.git
 ```
 ***Entre no diretório do projeto***
 
